@@ -7,7 +7,7 @@ use HTML::Template;
 use Data::Dumper;
 
 if ($#ARGV<1) {
-	print STDERR "NMAP XML report writer v0.4. (C) Kost. Distributed under GPL.\n\n";
+	print STDERR "NMAP XML report writer v0.5. (C) Kost. Distributed under GPL.\n\n";
 	print STDERR "Usage: $0 <template> <nmap-file.xml> ...\n";
 	print STDERR "Example: $0 nmap.tmpl nmap-host1.xml nmap-host2.xml > nmap.html\n";
 	exit 0;
@@ -87,6 +87,7 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 
 
 	my @extraports;
+	if (defined(@{$host->{'ports'}->[0]->{'extraports'}})) {
 	if ((@{$host->{'ports'}->[0]->{'extraports'}})) {
 		foreach my $port (@{$host->{'ports'}->[0]->{'extraports'}}) {
 			my ($fstateo,$fstatec,$fstatef,$fstatea);
@@ -114,9 +115,10 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 			push @extraports, \%extraport;
 		}
 		$hostinfo{'fextraports'}="Y";
-	}
+	} # if (@{$...
 
 	$hostinfo{'extraports'}=\@extraports;
+	} # if(defined(...
 
 	push @ohost, \%hostinfo;
 }
