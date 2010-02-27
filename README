@@ -1,13 +1,33 @@
-NMAP XML report writer (C) Kost. Distributed under GPL
+Scripts
+========
+nmapxml2html.pl: convert from XML to HTML without XSL
+nmapxml2httprint.pl: display http(s) servers from nmap XML
 
-Usage: nmapxml2html <template> <nmap-file.xml> ...
+
+=======================================
+nmapxml2html.pl: NMAP XML report writer 
+(C) Kost. Distributed under GPL
+
+Usage: nmapxml2html.pl <template> <nmap-file.xml> ...
 
 Examples:
-nmapxml2html nmap.tmpl nmap-host1.xml nmap-host2.xml > nmap.html
+nmapxml2html.pl nmap.tmpl nmap-host1.xml nmap-host2.xml > nmap.html
 
 Bugs
-====
+----
 Yes, I know, XSLs are way to do it. But sometimes, XSLs cannot 
 solve all your problems.
 Also, this is good example of how to parse nmap XML file.
+
+
+=============================================
+nmapxml2httprint.pl: NMAP XML to HTTP(S) URLs 
+(C) Kost. Distributed under GPL
+
+Usage: nmapxml2httprint.pl <nmap-file.xml> ...
+
+Examples: 
+	nmapxml2httprint.pl nmap-host1.xml
+
+
 
