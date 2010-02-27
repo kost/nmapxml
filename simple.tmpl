@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+	<TITLE>Nmap report</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF">
+
+<TMPL_LOOP NAME=HOST_LOOP>
+<TABLE BORDER="1">
+	<TR>
+
+	<TD> <TMPL_VAR NAME=addr> </TD>
+	<TD> <TMPL_VAR NAME=hostname> </TD>
+	<TMPL_IF NAME=type>
+		<TD> <TMPL_VAR NAME=type>
+		<TMPL_VAR NAME=name>
+		<TMPL_VAR NAME=acc> </TD>
+	<TMPL_ELSE>
+		<TD> &nbsp </TD>
+	</TMPL_IF>
+
+	<TR><TD COLSPAN="4">
+	<TMPL_IF NAME="fportsopen"> 
+		<TABLE BORDER="1">
+		<TMPL_LOOP NAME="ports">
+			<TR>
+			<TD> <TMPL_VAR NAME=protocol> </TD>
+			<TD> <TMPL_VAR NAME=portid> </TD>
+			<TD> <TMPL_VAR NAME=state> </TD>
+			<TD> <TMPL_VAR NAME=name> </TD>
+			<TD> <TMPL_VAR NAME=product> </TD>
+			<TD> <TMPL_VAR NAME=conf> </TD>
+			</TR>
+		</TMPL_LOOP>
+		</TABLE>
+	<TMPL_ELSE>
+		No open ports.
+	</TMPL_IF>
+	</TD></TR>
+
+	<TR><TD COLSPAN="4">
+	<TMPL_IF NAME="fextraports"> 
+		<TMPL_LOOP NAME="extraports">
+				
+			<TMPL_VAR NAME=count>
+			<TMPL_VAR NAME=state>
+		
+			<BR />
+		
+		</TMPL_LOOP>
+	</TMPL_IF>
+	</TD></TR>
+
+	</TABLE>
+
+	<P>&nbsp</P>
+</TMPL_LOOP>
+
+</BODY>
+</HTML>

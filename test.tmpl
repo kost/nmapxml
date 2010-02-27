@@ -1,0 +1,29 @@
+
+<TMPL_LOOP NAME=HOST_LOOP>
+	<TMPL_VAR NAME=addr>
+	<TMPL_VAR NAME=hostname>
+	<TMPL_IF NAME=type>
+		<TMPL_VAR NAME=type>
+		<TMPL_VAR NAME=name>
+		<TMPL_VAR NAME=acc>
+	</TMPL_IF>
+	<TMPL_IF NAME="fportsopen"> 
+		<TMPL_LOOP NAME="ports">
+			<TMPL_VAR NAME=protocol>
+			<TMPL_VAR NAME=portid>
+			<TMPL_VAR NAME=state>
+			<TMPL_VAR NAME=name>
+			<TMPL_VAR NAME=product>
+			<TMPL_VAR NAME=conf>
+		</TMPL_LOOP>
+	<TMPL_ELSE>
+		No open ports.
+	</TMPL_IF>
+
+	<TMPL_IF NAME="fextraports"> 
+		<TMPL_LOOP NAME="extraports">
+			<TMPL_VAR NAME=count>
+			<TMPL_VAR NAME=state>
+		</TMPL_LOOP>
+	</TMPL_IF>
+</TMPL_LOOP>

@@ -1,0 +1,13 @@
+NMAP XML report writer (C) Kost. Distributed under GPL
+
+Usage: nmapxml2html <template> <nmap-file.xml> ...
+
+Examples:
+nmapxml2html nmap.tmpl nmap-host1.xml nmap-host2.xml > nmap.html
+
+Bugs
+====
+Yes, I know, XSLs are way to do it. But sometimes, XSLs cannot 
+solve all your problems.
+Also, this is good example of how to parse nmap XML file.
+
