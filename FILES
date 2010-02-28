@@ -1,0 +1,6 @@
+FILES			this file
+nmapXML2html.pl		nmap XML to html without xsl
+simple.tmpl		nmap XML to html without xsl, simple template
+test.tmpl		nmap XML to html without xsl, test template
+nmapXML2httprint.pl	nmap XML - print out https servers in form of URLs
+README			read this first
