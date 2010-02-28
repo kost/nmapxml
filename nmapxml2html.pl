@@ -7,7 +7,7 @@ use HTML::Template;
 use Data::Dumper;
 
 if ($#ARGV<1) {
-	print STDERR "NMAP XML report writer v0.5. (C) Kost. Distributed under GPL.\n\n";
+	print STDERR "NMAP XML report writer (C) Kost. Distributed under GPL.\n\n";
 	print STDERR "Usage: $0 <template> <nmap-file.xml> ...\n";
 	print STDERR "Example: $0 nmap.tmpl nmap-host1.xml nmap-host2.xml > nmap.html\n";
 	exit 0;
