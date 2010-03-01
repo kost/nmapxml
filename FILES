@@ -1,6 +1,9 @@
-FILES			this file
-nmapXML2html.pl		nmap XML to html without xsl
+nmapxml2html.pl		nmap XML to html without xsl
 simple.tmpl		nmap XML to html without xsl, simple template
 test.tmpl		nmap XML to html without xsl, test template
-nmapXML2httprint.pl	nmap XML - print out https servers in form of URLs
+
+nmapxml2httprint.pl	nmap XML - print out https servers in form of URLs
+nmapxml2mm.pl		nmap XML to FreeMind (.mm) compatible file
+
 README			read this first
+FILES			this file
