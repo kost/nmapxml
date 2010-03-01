@@ -5,7 +5,7 @@ nmapxml2httprint.pl: display http(s) servers from nmap XML
 
 
 =======================================
-nmapxml2html.pl: NMAP XML report writer 
+nmapxml2html.pl: Nmap XML report writer 
 (C) Kost. Distributed under GPL
 
 Usage: nmapxml2html.pl <template> <nmap-file.xml> ...
@@ -21,7 +21,7 @@ Also, this is good example of how to parse nmap XML file.
 
 
 =============================================
-nmapxml2httprint.pl: NMAP XML to HTTP(S) URLs 
+nmapxml2httprint.pl: Nmap XML to HTTP(S) URLs 
 (C) Kost. Distributed under GPL
 
 Usage: nmapxml2httprint.pl <nmap-file.xml> ...
@@ -30,4 +30,11 @@ Examples:
 	nmapxml2httprint.pl nmap-host1.xml
 
 
+=============================================
+nmapxml2mm.pl: Nmap XML to FreeMind (.mm) compatible file
+(C) Kost. Distributed under GPL
 
+Usage: nmapxml2mm.pl [-s] -i <nmap-file.xml> -o <nmap-file.mm>
+
+Examples: 
+	nmapxml2mm.pl -s -i nmap-host1.xml -o nmap-host1.mm
