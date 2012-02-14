@@ -2,6 +2,8 @@ Scripts
 ========
 nmapxml2html.pl: convert from XML to HTML without XSL
 nmapxml2httprint.pl: display http(s) servers from nmap XML
+nmapxml2openports.pl: display all open ports across the scans and its count
+nmapxml2ports.pl: display status of all ports by corelating normal port output and extra table
 
 
 =======================================
