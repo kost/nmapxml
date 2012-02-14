@@ -155,7 +155,7 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 
 	print "[h]".$hostinfo{'addr'}."\n";
 	for (my $i=$begport; $i<=$endport; $i++) { 
-		my $portformat=sprintf "%06d", $i;
+		my $portformat=sprintf "%05d", $i;
 		print " [p] $portformat: ".$hostports{$i}."\n";
 	}
 
