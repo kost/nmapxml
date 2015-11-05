@@ -39,6 +39,9 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 					
 				print "$req://$host->{'address'}->[0]->{'addr'}:$port->{'portid'}\n";
 				
+			} elsif ($port->{'service'}->[0]->{'name'} eq "https") {
+				my $req="https";
+				print "$req://$host->{'address'}->[0]->{'addr'}:$port->{'portid'}\n";
 			}
 		}
 	} # foreach (port)
