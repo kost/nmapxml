@@ -29,7 +29,7 @@ print STDERR "Using $mindmap as output\n";
 print STDERR "Processing $nmapfile...\n";
 my $nmapxml;
 eval {
-$nmapxml = XMLin($nmapfile, ForceArray => 1, KeyAttr => ''); 
+$nmapxml = XMLin($nmapfile, ForceArray => 1, KeyAttr => '');
 } or die ("Check your XML file $nmapfile! Error parsing XML file: $!");
 
 my $mindfile=$mindmap;
@@ -45,7 +45,7 @@ if ($fileperhost == 0) {
 	print GFILE '<node TEXT="hosts">'."\n";
 }
 
-foreach my $host (@{$nmapxml->{'host'}}) {	
+foreach my $host (@{$nmapxml->{'host'}}) {
 	my %hostinfo;
 	$mindfile=$mindmap."-".$host->{'address'}->[0]->{'addr'}.".mm";
 	if ($fileperhost == 1) {
@@ -68,7 +68,7 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 	print OFILE "<node TEXT=\"$host->{'os'}->[0]->{'osclass'}->[0]->{'type'},$hostinfo{'name'}=$host->{'os'}->[0]->{'osmatch'}->[0]->{'name'},$hostinfo{'acc'}=$host->{'os'}->[0]->{'osmatch'}->[0]->{'accuracy'}\"/>\n";
 	}
 	print OFILE "</node>\n"; # OS
-	
+
 #	print Dumper (@{$host->{'ports'}->[0]->{'port'}});
 
 	print OFILE '<node TEXT="ports">'."\n";
@@ -120,7 +120,7 @@ if ($fileperhost == 0) {
 	print GFILE "</map>\n";
 	close GFILE;
 }
-	
+
 
 sub help {
 	print STDERR "NMAP XML to FreeMind(map) (C) Kost. Distributed under GPL.\n\n";
@@ -128,4 +128,4 @@ sub help {
 	print STDERR "Example: $0 -o nmap.mm -i nmap-host1.xml\n";
 	exit 0;
 }
-	
+
