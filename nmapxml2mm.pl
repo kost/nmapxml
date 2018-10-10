@@ -96,7 +96,7 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 			print OFILE "<node TEXT=\"$port->{'count'}\"/>\n";
 			print OFILE "</node>\n"; # state
 		}
-		print OFILE "</node>\n"; # extra 
+		print OFILE "</node>\n"; # extra
 	}
 	}
 	print OFILE "</node>\n";  # ports node
