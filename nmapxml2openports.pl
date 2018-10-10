@@ -71,7 +71,6 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 	my @oports;
 #	print Dumper (@{$host->{'ports'}->[0]->{'port'}});
 
-	if (defined(@{$host->{'ports'}->[0]->{'port'}})) {
 	if (@{$host->{'ports'}->[0]->{'port'}}) {
 	foreach my $port (@{$host->{'ports'}->[0]->{'port'}}) {
 		my ($fstate,$fstateo,$fstatec,$fstatef,$fstatea);
@@ -108,11 +107,9 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 		$hostinfo{'fportsopen'}="Y";
 	} # foreach
 	} # not empty
-	} # defined
 	$hostinfo{'ports'} = \@oports;
 
 	my @extraports;
-	if (defined(@{$host->{'ports'}->[0]->{'extraports'}})) {
 	if ((@{$host->{'ports'}->[0]->{'extraports'}})) {
 		foreach my $port (@{$host->{'ports'}->[0]->{'extraports'}}) {
 			my ($fstateo,$fstatec,$fstatef,$fstatea);
@@ -149,7 +146,6 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 	} # if (@{$...
 
 	$hostinfo{'extraports'}=\@extraports;
-	} # if(defined(...
 
 	push @ohost, \%hostinfo;
 }
