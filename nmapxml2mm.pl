@@ -72,7 +72,6 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 #	print Dumper (@{$host->{'ports'}->[0]->{'port'}});
 
 	print OFILE '<node TEXT="ports">'."\n";
-	if (defined(@{$host->{'ports'}->[0]->{'port'}})) {
 	print OFILE '<node TEXT="open">'."\n";
 	if (@{$host->{'ports'}->[0]->{'port'}}) {
 	foreach my $port (@{$host->{'ports'}->[0]->{'port'}}) {
@@ -86,9 +85,7 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 	} # foreach
 	} # not empty
 	print OFILE "</node>\n";
-	} # defined
 
-	if (defined(@{$host->{'ports'}->[0]->{'extraports'}})) {
 	if ((@{$host->{'ports'}->[0]->{'extraports'}})) {
 		print OFILE '<node TEXT="extra">'."\n";
 		foreach my $port (@{$host->{'ports'}->[0]->{'extraports'}}) {
@@ -97,7 +94,6 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 			print OFILE "</node>\n"; # state
 		}
 		print OFILE "</node>\n"; # extra
-	}
 	}
 	print OFILE "</node>\n";  # ports node
 
