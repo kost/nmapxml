@@ -31,12 +31,12 @@ while (my $nmapfile = shift) {
 
 my $nmapxml;
 eval {
-$nmapxml = XMLin($nmapfile, ForceArray => 1, KeyAttr => ''); 
+$nmapxml = XMLin($nmapfile, ForceArray => 1, KeyAttr => '');
 } or die ("Check your XML file $nmapfile! Error parsing XML file: $!");
 
 my @doneports;
 if ({$nmapxml->{'scaninfo'}->[0]}) {
-	
+
 	my $scannedports=$nmapxml->{'scaninfo'}->[0]->{'services'};
 
 	foreach my $entry (split(",",$scannedports)) {
@@ -53,11 +53,11 @@ if ({$nmapxml->{'scaninfo'}->[0]}) {
 
 # foreach my $doneport (@doneports) {  print STDERR "=$doneport\n"; }
 
-foreach my $host (@{$nmapxml->{'host'}}) {	
+foreach my $host (@{$nmapxml->{'host'}}) {
 	my %hostinfo;
 	my %hostports;
 
-	$hostinfo{'addr'} = $host->{'address'}->[0]->{'addr'}; 
+	$hostinfo{'addr'} = $host->{'address'}->[0]->{'addr'};
 #	$totalhosts++;
 #	$totalup++ if ($host->{'status'}->[0]->{'state'} eq "up");
 	$hostinfo{'hostname'} = $host->{'hostnames'}->[0]->{'hostname'}->[0]->{'name'};
@@ -67,7 +67,7 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 	$hostinfo{'acc'}=$host->{'os'}->[0]->{'osmatch'}->[0]->{'accuracy'};
 	}
 
-	
+
 	my @oports;
 #	print Dumper (@{$host->{'ports'}->[0]->{'port'}});
 
@@ -79,14 +79,14 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 		my $portnr=$port->{'portid'};
 		$hostports{$portnr}=$fstate;
 		if ($fstate eq "open") {
-			$fstateo="1";	
+			$fstateo="1";
 			$totalopen++;
 			$openports{$portnr}++;
 		} elsif ($fstate eq "closed") {
-			$fstatec="1";	
+			$fstatec="1";
 			$totalclosed++;
 		} elsif ($fstate eq "filtered") {
-			$fstatef="1";	
+			$fstatef="1";
 			$totalfiltered++;
 		} else {
 			$totalother++;
@@ -116,18 +116,18 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 	if ((@{$host->{'ports'}->[0]->{'extraports'}})) {
 		foreach my $port (@{$host->{'ports'}->[0]->{'extraports'}}) {
 			my ($fstateo,$fstatec,$fstatef,$fstatea);
-			foreach my $doneport (@doneports) { 
+			foreach my $doneport (@doneports) {
 				# print STDERR $doneport."-\n";
 				if ($hostports{$doneport} eq $notscanned) {
 					$hostports{$doneport} = $port->{'state'};
 				}
 			}
 			if ($port->{'state'} eq "open") {
-				$fstateo="1";	
+				$fstateo="1";
 			} elsif ($port->{'state'} eq "closed") {
-				$fstatec="1";	
+				$fstatec="1";
 			} elsif ($port->{'state'} eq "filtered") {
-				$fstatef="1";	
+				$fstatef="1";
 			} else {
 				$fstatea=$port->{'state'};
 			}
