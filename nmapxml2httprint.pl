@@ -16,13 +16,12 @@ while (my $nmapfile=shift) {
 print STDERR "Processing $nmapfile...\n";
 my $nmapxml;
 eval {
-$nmapxml = XMLin($nmapfile, ForceArray => 1, KeyAttr => ''); 
+$nmapxml = XMLin($nmapfile, ForceArray => 1, KeyAttr => '');
 } or die ("Check your XML file $nmapfile! Error parsing XML file: $!");
 
-foreach my $host (@{$nmapxml->{'host'}}) {	
+foreach my $host (@{$nmapxml->{'host'}}) {
 	my %hostinfo;
-	
-	if (defined(@{$host->{'ports'}->[0]->{'port'}})) {
+
 	if (@{$host->{'ports'}->[0]->{'port'}}) {
 	foreach my $port (@{$host->{'ports'}->[0]->{'port'}}) {
 		my $fstate;
@@ -36,9 +35,9 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 				} else {
 					$req="http";
 				}
-					
+
 				print "$req://$host->{'address'}->[0]->{'addr'}:$port->{'portid'}\n";
-				
+
 			} elsif ($port->{'service'}->[0]->{'name'} eq "https") {
 				my $req="https";
 				print "$req://$host->{'address'}->[0]->{'addr'}:$port->{'portid'}\n";
@@ -46,7 +45,6 @@ foreach my $host (@{$nmapxml->{'host'}}) {
 		}
 	} # foreach (port)
 	} # not empty
-	} # if (defined)
 } # foreach (host)
 
 } # while (nmapfile)
